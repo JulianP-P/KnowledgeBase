@@ -46,7 +46,6 @@ integer(8), parameter :: QW = 3**20
 integer, parameter :: I_ = 4
 integer(I_), parameter :: IntConst
 integer(I_) :: IntVar
-
 ```
 
 Оператор ` :: ` пишется, если используется какой-то атрибут или присваивание
