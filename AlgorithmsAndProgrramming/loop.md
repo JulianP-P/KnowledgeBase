@@ -62,5 +62,5 @@ integer R
 
 call random(x); R = int(x*10)        ! [0;9]
 call random(x); R = int(x*11) - 5    ! [-5;5]
-call random(x); R = int(x*6)*10      ! [
+call random(x); R = int(x*6)*10      ! 0,10,20,30,40,50
 ```
