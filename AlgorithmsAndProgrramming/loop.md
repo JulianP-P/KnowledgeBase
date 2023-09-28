@@ -49,3 +49,18 @@ do
   операторы
 end do
 ```
+## Псевдослучайные числа
+Случайные потому, что в определенный момент они начнут повторяться, но промежуток может быть очень большим
+
+```
+call random(x) 0.0 <= x <= 1.0
+call random_number(x)
+
+
+real x
+integer R
+
+call random(x); R = int(x*10)        ! [0;9]
+call random(x); R = int(x*11) - 5    ! [-5;5]
+call random(x); R = int(x*6)*10      ! [
+```
