@@ -24,8 +24,6 @@
         Оператор_Т
 ```
 
-Переменные-флаги - хранят результаты проверок
-
 ### Оператор выбора select case
 ```
 select case (выражение)
@@ -38,3 +36,23 @@ select case (выражение)
 end select
 ```
 Выражений должно быть целого, символьного илил логического типа
+
+Переменные-флаги - хранят результаты проверок
+
+Пример, как их можно избежать
+```
+read(*, *) op
+
+calc: block
+        select case (op)
+                case ('+'); res = a+b
+                case ('+'); res = a+b
+                case ('+'); res = a+b
+                case ('+'); res = a+b
+                case default
+                        write (ERROR_UNIT, *) "ERROR!"
+                        exit calc
+        end select
+        write (*, *) "Result ...", res
+end block calc
+```
