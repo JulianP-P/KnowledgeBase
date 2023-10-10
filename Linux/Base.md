@@ -133,3 +133,8 @@ grep -Eio "[a-z]"
 вывести только имя файлов, где встречается регулярка
 grep -Eioh "[a-z]" 
 ```
+
+```
+| команда объединения команд
+grep -Eioh "[a-zA-Z]" | tr [:upper:] [:lower:] | sort | uniq > file.txt
+```
