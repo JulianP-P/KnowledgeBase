@@ -6,4 +6,7 @@
 at.
 
 at -f user.job now+1 minutes
+
+grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' ~/hw/lab2/* | grep -v '\.\-' | grep -v '\-\.' | sort | uniq
+
 ```
