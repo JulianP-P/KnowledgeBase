@@ -7,7 +7,7 @@ at.
 
 at -f user.job now+1 minutes
 
-grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' ~/hw/lab2/* | grep -Ev '(\.\-|\-\.|\.\.|\-\-)' | sort | uniq
+grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' ~/hw/lab2/* | grep -Ev '(\.\-|\-\.|\.\.|\-\-)'
 
 
 grep -Eh '.*@.*' ~/hw/lab2/* | sort | uniq
@@ -15,4 +15,7 @@ grep -Eh '.*@.*' ~/hw/lab2/* | sort | uniq
 [:blank:] - Включает символы пробела и табуляции
 [:alnum:] - Алфавитно-цифровые символы; эквивалент диапазона [A-Za-z0-9] в ASCII
 [:alpha:] - Алфавитные символы; эквивалент диапазона [A-Za-z] в ASCII
+
+
+find . -name "*.txt" -exec grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' {} \; | grep -Ev '(\.\-|\-\.|\.\.|\-\-)' | grep -Eio '[[:alnum:]].*[[:alnum:]]' | tr [:upper:] [:lower:] | sort -u > base.txt
 ```
