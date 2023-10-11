@@ -20,4 +20,7 @@ grep -Eh '.*@.*' ~/hw/lab2/* | sort | uniq
 find . -name "*.txt" -exec grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' {} \; | grep -Ev '(\.\-|\-\.|\.\.|\-\-)' | grep -Eio '[[:alnum:]].*[[:alnum:]]' | tr [:upper:] [:lower:] | sort -u > base.txt
 
 sed 's/\([[:blank:]]\)*/\1/g' ./textI.txt
+
+echo "hello    world" |  sed 's/\([[:blank:]]\)*/\1/g'
+
 ```
