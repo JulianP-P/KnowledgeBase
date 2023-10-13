@@ -7,9 +7,6 @@ at.
 
 at -f user.job now+1 minutes
 
-grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' ~/hw/lab2/* | grep -Ev '(\.\-|\-\.|\.\.|\-\-)'
-
-
 grep -Eh '.*@.*' ~/hw/lab2/* | sort | uniq
 
 [:blank:] - Включает символы пробела и табуляции
@@ -21,12 +18,9 @@ grep -Eh '.*@.*' ~/hw/lab2/* | sort | uniq
 
 Позитивная ретроспективная проверка: (?<=Y)X, ищет совпадение с X при условии, что перед ним ЕСТЬ Y.
 
-grep -Pio '(?<=^|[[:blank:]:\(])[[:alpha:]]{1}[[:alnum:].-]*@[[:alnum:]]{1}[[:alnum:].-]*[.][[:alnum:].-]*[[:alpha:]]{1}(?=$|[\)[:blank:]])' ~/hw/lab2/* | grep -Ev '[.-][.-]|[.-]@' | sort
+find . -name "*.txt" -exec grep -Pioh '(?<=^|[[:blank:]:\(])[[:alpha:]]{1}[[:alnum:].-]*@[[:alnum:]]{1}[[:alnum:].-]*[.][[:alnum:].-]*[[:alpha:]]{1}(?=$|[\)[:blank:]])' {} \; | grep -Ev '[.-][.-]|[.-]@' | tr [:upper:] [:lower:] | sort -u > base.txt
 
-ba  
-find . -name "*.txt" -exec grep -Eioh '(^|\:|\(|[[:blank:]])[[:alpha:]]{1}[[:alnum:].-]+@[[:alnum:].-]+[[:alpha:]]{1}($|[[:blank:]]|\))' {} \; | grep -Ev '(\.\-|\-\.|\.\.|\-\-)' | grep -Eio '[[:alnum:]].*[[:alnum:]]' | tr [:upper:] [:lower:] | sort -u > base.txt
 
-find . -name "*.txt" -exec grep -Pioh '(?<=^|[[:blank:]:\(])[[:alpha:]]{1}[[:alnum:].-]*@[[:alnum:]]{1}[[:alnum:].-]*[.][[:alnum:].-]*[[:alpha:]]{1}(?=$|[\)[:blank:]])' ~/hw/lab2/* | grep -Ev '[.-][.-]|[.-]@    ' {} \; | tr [:upper:] [:lower:] | sort -u > base.txt
 sed 's/\([[:blank:]]\)*/\1/g' ./textI.txt
 
 echo "hello    world" |  sed 's/\([[:blank:]]\)*/\1/g'
