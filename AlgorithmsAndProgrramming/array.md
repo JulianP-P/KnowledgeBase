@@ -217,9 +217,35 @@ c = Sum (MatMul (A, B))
 ### Умножение матриц
 
 ```
-C = MatMul (A, B) ! [Nx1] * [1XM] = [N x M]
+! произведение матрицы на матрицу
+real :: A(N, M), B(M, K), C(N, K)
+C = MatMul (A, B) ! [NxM] * [MxK] = [N x K]
 
-! Произведение j - го 
+! произведение вектора-строки на матрицу
+real :: A(M), B(M, K), C(K)
+C = MatMul (A, B) ! [M] * [MxK] = [K]
+
+! произведение матрицы на вектор-столбец
+real :: A(N, M), B(M), C(N)
+C = MatMul (A, B) ! [NxM] * [M] = [N]
+
+! произведение вектора-столбца на вектор-строку
+real :: A(N, 1), B(1, M), C(N, M)
+C = MatMul (A, B) ! [Nx1] * [1xM] = [NxM]
+
+! Произведение j - ого столбца матрицы на i-ую строку матрицы (внешним произведением).
+real :: A(N, K), B(L, M), C(N, M)
+C = MatMul(A(:, j:j), B(i:i, :)) ! [Nx1] * [1xM] = [NxM]
+
+! Разделить массив на положительные и остальные элементы.
+real, allocatable :: A(:)
+logical, allocatable :: Pos(:)
+
+Pos = A > 0
+N = Count(Pos)
+A = [Pack(A, Pos), Pack(A, .not. Pos)]
+call Sort(A(1:N))
+
 ```
 
 ### Сечения
