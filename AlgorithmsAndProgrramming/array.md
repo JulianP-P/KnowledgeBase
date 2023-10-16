@@ -246,6 +246,9 @@ N = Count(Pos)
 A = [Pack(A, Pos), Pack(A, .not. Pos)]
 call Sort(A(1:N))
 
+! сортировка каждого четного эл-та
+call Sort(A(::2)) ! A(1:N:2)
+
 ```
 
 ### Сечения
