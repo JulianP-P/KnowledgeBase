@@ -259,8 +259,9 @@ fun2 () {
   return
 }
 
-if [ $y = 4 ] then 
-
+if [ $y = 4 ] then
+# регулярные выражения будут работать только так if [[ "$y" =~ ^-?[0-9]+$ ]] then
+# if [[ "$INT" -ge "$MIN" && "$INT" -le "$MAX" ]] 
 else
 
 fi
