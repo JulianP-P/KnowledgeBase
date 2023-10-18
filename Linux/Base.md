@@ -240,7 +240,7 @@ touch $filename
 mv $filename $filename11 -ошибка
 mv $filename ${filename}11 -ок 
 ```
-
+### Скрипты
 ```
 var1 = 0
 
@@ -258,5 +258,11 @@ fun2 () {
   echo "hello"
   return
 }
+
+if [ $y = 4 ] then 
+
+else
+
+fi
 
 ```
