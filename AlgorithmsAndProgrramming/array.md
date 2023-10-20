@@ -404,4 +404,22 @@ do concurrent (integer :: i = 1, N)
   A(i) = blah**2 + cos(blah)
 end do
 ```
+## Отображение ранга
+```
+real, target :: MYDATA (NR*NC)  ! Автоматический массив, адресат, на него можно ссылаться
+real, pointer :: MATRIX (:, :)  ! Двухранговый взгляд на MYDATA
+real, pointer :: VIES_DIAG(:)   ! Будущая диагональ матрицы
 
+MATRIX(1:NR, 1:NC) => MYDATA    ! Взгляд MATRIX на данные, для переменной MATRIX формируется описатель, который ссылается на тот же участок памяти, что и MYDATA
+
+VIEW_DIAG => MYDATA(1::NR+1)    ! Диагональ матрицы
+
+! Строки, столбцы или блоки матрицы могут быть доступны как сечения MATRIX
+```
+Наоборот
+```
+! Данные обязательно должны быть непрерывными
+real, contiguous, pointer :: A(:)
+real, contiguous, target :: B(:, :)
+A(1:size(B))) => B ! Линейный взяглд на массив B
+```
