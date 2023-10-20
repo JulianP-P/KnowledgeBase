@@ -334,10 +334,47 @@ integer ERR_ALLOC
 allocate(A(50,50), STAT=ERR_ALLOC)
 
 if(ERR_ALLOC/=0) stop "Allocation ERROR"
+
+print *, allocated(A) !T
+deallocate(A) ! освободить память
+print *, allocated(A) ! F
+```
+```
+complex(16) A(-20:20, -30:30)
+complex(16), allocateble :: CHILD(:, :)
+integer ERR_ALLOC
+
+!унаследовали границу, форму и значения массива А
+! если нужно только форму копировать, то можно взять параметр - shape
+allocate(CHILD, SOURCE=A, STAT=ERR_ALLOC)
+
+if(ERR_ALLOC/=0) stop "Allocation ERROR"
 ```
 ## Маскированное присваивание
 ### Оператор where
-Эффективное выборочное присваивание
+Эффективное выборочное присваивание - замена связки do --- if
+```
+where (логическое выражение-массив)
+  операторы присваивания массивов
+elsewhere
+  операторы присваивания массивов
+end where
+```
+Пример
+```
+progream use_where
 
+integer :: A(7) = [1, -2, 3, -4]
+
+where (A<0)
+  A=-A
+elsewhere
+  where (A==0)
+    A=5
+  elsewhere
+    A=A*2
+  end where
+end where
+```
 Векторный индекс используется только в исключительных случаях
 
