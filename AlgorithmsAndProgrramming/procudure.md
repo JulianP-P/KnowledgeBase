@@ -81,5 +81,9 @@ recursive -
 
 ### оператор return
 
+### Процедуры как параметры
+
+`symbol unresolt`
+
 
 
