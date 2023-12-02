@@ -1,8 +1,21 @@
+memory leaks - утечка памяти
+
 Если на вход функции приходит ссылка, то проверяем, связанна ли она `type(node), pointer :: cuurent; if(Associated(current))...`
 
 Если не делаем `deallocate(tmp)`, то объект становится недостижимым (unreachable)
 
 Собственный код = исполняемый код для конкретной платформы
+
+Добавляем в начало списка новый объект
+```
+type(entry), allocatable :: top, temp
+temp = entry( new_value, new_indexm temp)
+call move_alloc( top, temp%next) - отдает размещение от одного объекта к другому, а первый объект становится не размещен
+call move_alloc(temp, top)
+```
+
+Перепрыгеуть объекту самому через себя
+`top = top%next`
 
 Двунаправленный список создаем при острой необходимости
 
