@@ -16,6 +16,11 @@ call move_alloc(temp, top)
 
 Перепрыгеуть объекту самому через себя
 `top = top%next`
+или
+```
+call move_alloc(Elem%next, temp)
+call move_alloc(temp, Elem)
+```
 
 Двунаправленный список создаем при острой необходимости
 
