@@ -27,6 +27,33 @@ call move_alloc(temp, Elem)
 ## Полиморфизм
 - возможность работать с объектами разной природы
 
+```
+! Структура данных для узла списка.
+! Инициализация обязательна!
+type node
+!type, abstract :: node
+   class(node), pointer :: next  => Null()
+end type node
+
+type, extends(node) :: variable
+   character(kind=CH_)  :: char = ""
+end type variable
+
+type, extends(variable) :: operation
+end type operation
+
+type, extends(node) :: operand
+    integer(I_) :: value = 0
+ end type operand
+
+type, extends(node) :: left_bracket
+  character(kind=CH_) :: bracket = CH__"("
+end type left_bracket
+
+type, extends(node) :: right_bracket
+    character(kind=CH_)  :: bracket = CH__")"
+end type right_bracket
+```
 
 ## Кодирование динамических структур данных средствами функционального программирования
 
